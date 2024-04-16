@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+
+  <link rel="icon" href="./image/mlogo.png" type="image/x-icon">
+  <title>Manawari PH</title>
+
+  <!-- font awesome cdn link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+  <!-- custom css file link -->
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+  <!-- header section starts -->
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <img src="./image/mlogo.png" alt="Logo">
+        <a href="#">
+          <span class="word1">MANAWARI</span>
+          <span class="word2">TRAVEL</span>
+        </a>
+      </div>      
+      <ul class="links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#philippines">The Philippines</a></li>
+        <li><a href="#packages">Famous Destinations</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#package">Tour Packages</a></li>
+        <li><a href="#review">Reviews</a></li>
+        <li><a href="#book">Contact</a></li>
+      </ul>
+      <a href="#book" class="booknow_btn">Book Now</a>
+      <div class="toggle_btn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+
+
+    <div class="dropdown_menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#philippines">The Philippines</a></li>
+      <li><a href="#packages">Famous Destinations</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#package">Tour Packages</a></li>
+      <li><a href="#review">Reviews</a></li>
+      <li><a href="#book">Contact</a></li>
+      <li><a href="#book" class="booknow_btn">Book Now</a></li>
+    </div>
+  </header>
+
+    <script>
+window.addEventListener('scroll', function() {
+  var header = document.querySelector('header');
+  var scrollPosition = window.scrollY;
+  if (scrollPosition > 50) { // Change 50 to your desired scroll position
+    header.classList.add('dark'); // Add dark class when scrolled
+  } else {
+    header.classList.remove('dark'); // Remove dark class when at top
+  }
+});
+
+  
+  const header = document.querySelector('header');
+  // Function to handle scroll event
+  function handleScroll() {
+  // Get the current scroll position
+  const scrollPosition = window.scrollY;
+
+  // Check if the scroll position is greater than or equal to the header's offset top
+  if (scrollPosition >= header.offsetTop) {
+    // If it is, add a class to make the header sticky
+    header.classList.add('sticky');
+  } else {
+    // Otherwise, remove the class
+    header.classList.remove('sticky');
+  }
+}
+      const toggleBtn = document.querySelector('.toggle_btn')
+      const toggleBtnIcon = document.querySelector('.toggle_btn i')
+      const dropDownMenu = document.querySelector('.dropdown_menu')
+
+      toggleBtn.onclick = function () {
+        dropDownMenu.classList.toggle('open')
+
+        toggleBtnIcon.classList = isOpen
+          ? 'fa-solid fa-xmark'
+          : 'fa-solid fa-bars'
+      }
+    </script>
+
+  <!-- home section starts -->
+  <section class="home" id="home">
+
+    <div class="content">
+      <h3>
+        <span class="words1">MANAWARI</span> 
+        <span class="words2">Travel</span>
+      </h3>
+      <p>Your Travel Partner in the Philippines</p>
+      <a href="#book" class="btn">Travel With Us</a>
+    </div>
+    
+
+    <div class="controls">
+      <span class="vid-btn active" data-src="./image/banaue.webp"></span>
+      <span class="vid-btn" data-src="./image/coron.webp"></span>
+      <span class="vid-btn" data-src="./image/bohol.webp"></span>
+      <span class="vid-btn" data-src="./image/boracay.webp"></span>
+      <span class="vid-btn" data-src="./image/cebu.webp"></span>
+      <span class="vid-btn" data-src="./image/elnido.webp"></span>
+      <span class="vid-btn" data-src="./image/siargao.webp"></span>
+      <span class="vid-btn" data-src="./image/batanes.webp"></span>
+    </div>
+    
+    <div class="video-container">
+      <img src="./image/Banaue.webp" id="video-slider">
+    </div>
+    
+    <script>
+
+// Add scroll event listener
+window.addEventListener('scroll', handleScroll);
+
+      const vidBtns = document.querySelectorAll('.vid-btn');
+      const videoSlider = document.getElementById('video-slider');
+      let currentIndex = 0;
+      const intervalTime = 5000; // 5 seconds
+      let intervalId;
+    
+      function showImage(index) {
+        const src = vidBtns[index].getAttribute('data-src');
+        videoSlider.setAttribute('src', src);
+        vidBtns.forEach(b => b.classList.remove('active'));
+        vidBtns[index].classList.add('active');
+      }
+    
+      function nextImage() {
+        currentIndex = (currentIndex + 1) % vidBtns.length;
+        showImage(currentIndex);
+      }
+    
+      function startAutoTransition() {
+        intervalId = setInterval(nextImage, intervalTime);
+      }
+    
+      function stopAutoTransition() {
+        clearInterval(intervalId);
+      }
+    
+      // Start automatic transition
+      startAutoTransition();
+    
+      // Stop automatic transition when hovering over the carousel
+      const videoContainer = document.querySelector('.video-container');
+      videoContainer.addEventListener('mouseenter', stopAutoTransition);
+    
+      // Restart automatic transition when mouse leaves the carousel
+      videoContainer.addEventListener('mouseleave', () => {
+        startAutoTransition();
+      });
+    
+      // Event listeners for manual transition
+      vidBtns.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+          currentIndex = index;
+          showImage(currentIndex);
+          stopAutoTransition(); // Stop automatic transition on manual interaction
+        });
+      });
+    </script>
+  </section>
+  <!-- home section ends -->
+
+
+
+
+  
+  <!-- gallery section starts -->
+  <section class="gallery" id="philippines">
+
+    <h1 class="heading">
+      <span>7 </span>
+      <span class="space"></span>
+      <span>R</span>
+      <span>E</span>
+      <span>A</span>
+      <span>S</span>
+      <span>O</span>
+      <span>N</span>
+      <span>S </span>
+      <span class="space"></span>
+      <span class="space"></span>
+      <span>T</span>
+      <span>O</span>
+      <span class="space"></span>
+      <span class="space"></span>
+      <span>V</span>
+      <span>I</span>
+      <span>S</span>
+      <span>I</span>
+      <span>T</span>
+    </h1>
+
+    <div class="box-container">
+
+      <div class="box">
+        <img src="./image/reasons/1.png" alt="">
+        <div class="content">
+          <h3>Home of the Best Islands in the World</h3>
+          <a href="#" class="btn">learn more</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <img src="./image/reasons/2.png" alt="">
+        <div class="content">
+          <h3>World-class Diving Experience</h3>
+          <a href="#" class="btn">learn more</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <img src="./image/reasons/3.png" alt="">
+        <div class="content">
+          <h3>Wide-range of Activities and Adventure</h3>
+          <a href="#" class="btn">learn more</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <img src="./image/reasons/4.png" alt="">
+        <div class="content">
+          <h3>Legendary Sunsets</h3>
+          <a href="#" class="btn">learn more more</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <img src="./image/reasons/5.png" alt="">
+        <div class="content">
+          <h3>Friendliest Locals You’ll Ever Meet</h3>
+          <a href="#" class="btn">learn more</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <img src="./image/reasons/6.png" alt="">
+        <div class="content">
+          <h3>Vibrant Culinary Flavors</h3>
+          <a href="#" class="btn">learn more</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <img src="./image/reasons/7.png" alt="">
+        <div class="content">
+          <h3>Breathtaking Natural Wonders</h3>
+          <a href="#" class="btn">learn more</a>
+        </div>
+      </div>
+  </section>
+  <!-- gallery section ends -->
+
+
+  <!-- packages section starts -->
+  <section class="packages" id="packages">
+
+    <h1 class="headings">
+      <span>P</span>
+      <span>H</span>
+      <span>I</span>
+      <span>L</span>
+      <span>I</span>
+      <span>P</span>
+      <span>P</span>
+      <span>I</span>
+      <span>N</span>
+      <span>E</span>
+      <span>S</span>
+    </h1>
+
+    <div class="box-container">
+
+      <div class="box">
+        <img src="./image/elnido.webp" alt="">
+        <div class="content">
+          <h3><i class="fas fa-map-marker-alt"></i>    El Nido</h3>
+          <p>A breathtaking paradise located in the province of Palawan in the Philippines, renowned for its stunning limestone cliffs, crystal-clear turquoise waters, and pristine white sandy beaches.</p>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="price">From $1000.00 <span></span></div>
+          <a href="#" class="btn">book now</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <img src="./image/Coron.webp" alt="">
+        <div class="content">
+          <h3><i class="fas fa-map-marker-alt"></i>    Coron</h3>
+          <p>Another breathtaking destination in the province of Palawan, Philippines, known for its stunning natural beauty, crystal-clear waters, and rich marine life. It offers a mix of adventure, relaxation, and awe-inspiring scenery that attracts travelers from around the world.</p>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="price">From $1000.00 <span></span></div>
+          <a href="#" class="btn">book now</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <img src="./image/Boracay.webp" alt="">
+        <div class="content">
+          <h3><i class="fas fa-map-marker-alt"></i>    Boracay</h3>
+          <p>A world-renowned tropical paradise located in the Western Visayas region of the Philippines. Known for its powdery white sand beaches, crystal-clear turquoise waters, and vibrant nightlife, Boracay is a top destination for beach lovers and adventure seekers alike.</p>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="price">From $1000.00<span></span></div>
+          <a href="#" class="btn">book now</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <img src="./image/siargao.webp" alt="">
+        <div class="content">
+          <h3><i class="fas fa-map-marker-alt"></i>    Siargao</h3>
+          <p>Surfing Capital of the Philippines is renowned for its world-class surfing spots, with Cloud 9 being the most famous. This iconic surf break offers powerful, hollow waves that attract surfers from around the globe. Beginners can also find gentler waves in spots like Jacking Horse and Quicksilver.</p>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="price">From $1000.00 <span></span></div>
+          <a href="#" class="btn">book now</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <img src="./image/bohol.webp" alt="">
+        <div class="content">
+          <h3><i class="fas fa-map-marker-alt"></i>    Bohol</h3>
+          <p>Renowned for its stunning natural attractions and historic sites. Perhaps the most iconic attraction of Bohol, the Chocolate Hills is a natural wonder consisting of thousands of cone-shaped hills covered in green grass that turns chocolate brown during the dry season.</p>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="price">From $1000.00<span></span></div>
+          <a href="#" class="btn">book now</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <img src="./image/Banaue.webp" alt="">
+        <div class="content">
+          <h3><i class="fas fa-map-marker-alt"></i>    Banaue</h3>
+          <p>The main attraction of Banaue is undoubtedly its ancient rice terraces, carved into the mountainsides by the Ifugao people over 2,000 years ago. These terraces are a UNESCO World Heritage Site and are often called the "Stairway to the Sky" due to their impressive scale and beauty.</p>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="price">From $1000.00<span></span></div>
+          <a href="#" class="btn">book now</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <img src="./image/Batanes.webp" alt="">
+        <div class="content">
+          <h3><i class="fas fa-map-marker-alt"></i>    Batanes</h3>
+          <p>A captivating and remote group of islands situated at the northernmost tip of the Philippines. Known for its rugged landscapes, picturesque rolling hills, stunning coastlines, and unique Ivatan culture, Batanes offers a serene and off-the-beaten-path destination for adventurous travelers.</p>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="price">From $1000.00<span></span></div>
+          <a href="#" class="btn">book now</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <img src="./image/Cebu.webp" alt="">
+        <div class="content">
+          <h3><i class="fas fa-map-marker-alt"></i>    Cebu</h3>
+          <p>A vibrant and diverse province , known for its rich history, treasure trove of historical landmarks. Cebu is rich in historical sites due to its significant role in Philippine history, particularly during the Spanish colonial period.  One of the most vibrant and widely celebrated festivals in the Philippines is the Sinulog Festival in Cebu City.</p>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="price">From $1000.00<span></span></div>
+          <a href="#" class="btn">book now</a>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- packages section ends -->
+
+  <!-- services section starts -->
+
+  <section class="services" id="services">
+
+  <h1 class="heading">
+    <span>s</span>
+    <span>e</span>
+    <span>r</span>
+    <span>v</span>
+    <span>i</span>
+    <span>c</span>
+    <span>e</span>
+    <span>s</span>
+  </h1>
+
+  <div class="box-container">
+    <div class="box">
+      <img src="./image/services/flight.png" alt="Hotel Icon">
+      <h3>Flight Booking</h3>
+      <p>We have access to a wide range of airlines and we can help you compare prices and schedules to get the best deal.</p>
+    </div>
+    <div class="box">
+        <img src="./image/services/tours.png" alt="Hotel Icon">
+        <h3>Tours & Activities</h3>
+        <p>Elevated tours and activities to maximize the fun and enjoyment in each tour. </p>
+    </div>
+    <div class="box">
+      <img src="./image/services/transfers.png" alt="Hotel Icon">
+        <h3> Transfers</h3>
+        <p>This includes booking airport transfers, car rentals, fery tickets, or other modes of transportation to get you from one place to another during your trip.</p>
+    </div>
+    <div class="box">
+        <img src="./image/services/hotels.png" alt="Hotel Icon">
+        <h3>Hotel Bookings</h3>
+        <p>Whether you're looking for a luxury resort, a budget-friendly hostel, or a cozy bed and breakfast, we can help make the arrangements.</p>
+    </div>
+    <div class="box">
+        <img src="./image/services/visa.png" alt="Hotel Icon">
+        <h3>Visa and Documentation Assistance</h3>
+        <p>We provide guidance on visa requirements for different countries and help with the application process. We also assist with other necessary travel documents and paperwork.</p>
+    </div>
+    <div class="box">
+        <img src="./image/services/insurance.png" alt="Hotel Icon">
+        <h3>Travel Insurance</h3>
+        <p>We offer travel insurance options to protect you from unexpected events such as trip cancellations, medical emergencies, or lost luggage.</p>
+    </div>
+
+  </div>
+
+  </section>
+
+  <!-- services section ends -->
+
+  <section class="package" id="package">
+    <div class="container">
+
+      <h1 class="heading">
+        <span>T</span>
+        <span>O</span>
+        <span>U</span>
+        <span>R</span>
+        <span>S</span>
+      </h1>
+
+      <h2 class="h2 section-title">Check out Our MOST REQUESTED TOUR PackAges</h2>
+
+      <ul class="package-list">
+
+        <li>
+          <div class="package-card">
+
+            <figure class="card-banner">
+              <img src="./image/packages/classic.png" alt="Classic" loading="lazy">
+            </figure>
+
+            <div class="card-content">
+
+              <h3 class="h3 card-title">Classic</h3>
+
+              <p class="card-text">
+                <ul class="custom-list">
+                  <li>13 Nights accommodation</li>
+                  <li>Half board meals</li>
+                  <li>All domestic flights</li>
+                  <li>All transportations</li>
+                  <li>Guided tours in each islands</li>
+                  <li>And many more...</li>
+                </ul>
+              </p>
+              
+
+              <ul class="card-meta-list">
+                <li class="card-meta-item">
+                  <div class="meta-box">
+                    <ion-icon name="time"></ion-icon>
+
+                    <p class="text">13D/12N</p>
+                  </div>
+                </li>
+
+                <li class="card-meta-item">
+                  <div class="meta-box">
+                    <ion-icon name="people"></ion-icon>
+
+                    <p class="text">pax: 1</p>
+                  </div>
+                </li>
+
+                <li class="card-meta-item">
+                  <div class="meta-box">
+                    <ion-icon name="location"></ion-icon>
+
+                    <p class="text">Philippines</p>
+                  </div>
+                </li>
+
+              </ul>
+
+            </div>
+
+            <div class="card-price">
+
+              <div class="wrapper">
+
+                <p class="reviews">(25 reviews)</p>
+
+                <div class="card-rating">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                </div>
+
+              </div>
+
+              <p class="price">
+                $1000.00
+                <span>/ per person</span>
+              </p>
+
+              <button class="btn btn-secondary">Book Now</button>
+
+            </div>
+
+          </div>
+        </li>
+
+        <li>
+          <div class="package-card">
+
+            <figure class="card-banner">
+              <img src="./image/packages/happily.png" alt="Happily Ever After" loading="lazy">
+            </figure>
+
+            <div class="card-content">
+
+              <h3 class="h3 card-title">Happily Ever After</h3>
+
+              <p class="card-text">
+                <ul class="custom-list">
+                  <li>10 Nights hand picked hotels for honeymoon</li>
+                  <li>Half board meals</li>
+                  <li>All domestic flights, transfers</li>
+                  <li>Guided tours</li>
+                  <li>And many more...</li>
+                </ul>
+              </p>
+
+              <ul class="card-meta-list">
+
+                <li class="card-meta-item">
+                  <div class="meta-box">
+                    <ion-icon name="time"></ion-icon>
+
+                    <p class="text">11D/10N</p>
+                  </div>
+                </li>
+
+                <li class="card-meta-item">
+                  <div class="meta-box">
+                    <ion-icon name="people"></ion-icon>
+
+                    <p class="text">pax: 2</p>
+                  </div>
+                </li>
+
+                <li class="card-meta-item">
+                  <div class="meta-box">
+                    <ion-icon name="location"></ion-icon>
+
+                    <p class="text">Philippines</p>
+                  </div>
+                </li>
+
+              </ul>
+
+            </div>
+
+            <div class="card-price">
+
+              <div class="wrapper">
+
+                <p class="reviews">(20 reviews)</p>
+
+                <div class="card-rating">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                </div>
+
+              </div>
+
+              <p class="price">
+                $1000.00
+                <span>/ per person</span>
+              </p>
+
+              <button class="btn btn-secondary">Book Now</button>
+
+            </div>
+
+          </div>
+        </li>
+
+        <li>
+          <div class="package-card">
+
+            <figure class="card-banner">
+              <img src="./image/packages/island.png" alt="Island Explorer Adventure" loading="lazy">
+            </figure>
+
+            <div class="card-content">
+
+              <h3 class="h3 card-title">Island Explorer Adventure</h3>
+
+              <p class="card-text">
+                <ul class="custom-list">
+                  <li>5 Top Island Destinations</li>
+                  <li>17 Nights accommodation</li>
+                  <li>Half board meals</li>
+                  <li>All domestic flights, transfers</li>
+                  <li>Guided tour</li>
+                  <li>And many more...</li>
+                </ul>
+              </p>
+
+              <ul class="card-meta-list">
+
+                <li class="card-meta-item">
+                  <div class="meta-box">
+                    <ion-icon name="time"></ion-icon>
+
+                    <p class="text">18D/17N</p>
+                  </div>
+                </li>
+
+                <li class="card-meta-item">
+                  <div class="meta-box">
+                    <ion-icon name="people"></ion-icon>
+
+                    <p class="text">pax: 1</p>
+                  </div>
+                </li>
+
+                <li class="card-meta-item">
+                  <div class="meta-box">
+                    <ion-icon name="location"></ion-icon>
+
+                    <p class="text">Philippines</p>
+                  </div>
+                </li>
+
+              </ul>
+
+            </div>
+
+            <div class="card-price">
+
+              <div class="wrapper">
+
+                <p class="reviews">(40 reviews)</p>
+
+                <div class="card-rating">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                </div>
+
+              </div>
+
+              <p class="price">
+                $1000.00
+                <span>/ per person</span>
+              </p>
+
+              <button class="btn btn-secondary">Book Now</button>
+
+            </div>
+
+          </div>
+        </li>
+
+      </ul>
+
+      <button class="btn btn-primary">View All Packages</button>
+
+    </div>
+  </section>
+
+
+<!-- review section starts -->
+<section>
+  <section class="review" id="review"></section>
+  <h1 class="heading">
+    <span>r</span>
+    <span>e</span>
+    <span>v</span>
+    <span>i</span>
+    <span>e</span>
+    <span>w</span>
+    <span>s</span>
+</h1>
+  <div class="wrappers">
+    <ul class="carousel">
+        <li class="card">
+          <div class="img"><img src="image/reviews/roe.png" alt="img" draggable="false"></div>
+          <h2>Roeschelle Tiongson De Torres</h2>
+          <span>March 10, 2023</span>
+          <p>Over my conversation with Tricia, she was very accommodating and understanding with every situation i ask to her. Prior our US Visa interview, she has specifically created questions with inputs depending on our current situation (like my grand father being in the US and we havent visited him yet) she has been very kind with answering my questions and uplifting my confidence that we will pass the interview, and she was right, we made it! I have definitely made the right choice on choosing Manawari! Thank you so much, Team and Tricia</p>
+        </li>
+        <li class="card">
+        <div class="img"><img src="image/reviews/kennex.png" alt="img" draggable="false"></div>
+        <h2>Kennex Rey Monsanto</h2>
+        <span>April 30, 2022</span>
+        <p> Best decision na nag book kami for our honeymoon with Manawari Travel! We all know how hectic mag prepare for a wedding so we decided na mag hanap ng agency para hassle free mag prepare for a honeymoon.<br>
+        From booking of flights, to travel documents dahil sa pandemic, si Miss Tricia of Manawari Travels na nag asikaso. As in dadalhin mo nalang talaga sarili mo. Also, all our request was granted, from customizing the package and preferred time ng flights.
+        <br>Also, may mga surprises si Miss Tricia prepared for us during our trip kaya mas naging special ang vacation namin 
+        <br>If you’re looking for a sign to book your vacation with Manawari, this is it. Even sa future travel plans namin, we’ll definitely book with Manawari again </p>
+      </li>
+      <li class="card">
+        <div class="img"><img src="image/reviews/kevin.png" alt="img" draggable="false"></div>
+        <h2>Kevin Francis Segovia</h2>
+        <span>January 31, 2022</span>
+        <p>Thank you Manawari Travel for making our Boracay 2022 at Crimson, possible. We felt like celebrities/VIP with Manawari. Super baby! Excellent customer service! A big shout out to Ms. Tricia Zabat for arranging everything for us. Very hassle free! Up to the last minute flight cancellations going back to Manila, super walang hassle. They did all the paper works for us. What we did nalang is to show up sa airport for our departure, and have fun during our trip. Plus, may pa thank you gift pa sila. Then they gave me surprise sa Crimson Boracay coz it was my Birthday. Will not mention it. It’s for you to find out! Hahaha! Thank you again Manawari Travel for a relaxing and hassle free vacation!!!</p>
+      </li>
+      <li class="card">
+        <div class="img"><img src="image/reviews/che.png" alt="img" draggable="false"></div>
+        <h2>Che Tuazon</h2>
+        <span>April 21, 2022</span>
+        <p>The most hassle-free vacation I had was booked with Manawri Travel. 
+          <br>They took care of EVERYTHING. Impeccable attention to detail 
+          <br>Thank you so much, Manawari! </p>
+      </li>
+      <li class="card">
+        <div class="img"><img src="image/reviews/ivy.png" alt="img" draggable="false"></div>
+        <h2>Ivy Jimenez-Briones</h2>
+        <span>February 21, 2022</span>
+        <p>Our very first trip as husband and wife was very relaxing and memorable, thanks to Manawari Travel and Ms. Tricia in particular! From answering my inquiries up to our arrival in Palawan, Ms. Tricia was very patient. I recommend this agency to those who wants a stress free vacation. From the itinerary to the tour itself. Talagang pag dating lang sa airport ang kailangan because naayos na nila lahat. Thank you so much! We will definitely book with Manawari again.</p>
+      </li>
+      <li class="card">
+        <div class="img"><img src="image/reviews/madonna.png" alt="img" draggable="false"></div>
+        <h2>Madonna B. Sanchez</h2>
+        <span>January 21, 2024</span>
+        <p>They have excellent service!  Personalized and professional. I can't wait to book with them again.</p>
+      </li>
+    </ul>
+  </div>
+  <script>
+    const wrapper = document.querySelector(".wrapper");
+const carousel = document.querySelector(".carousel");
+const firstCardWidth = carousel.querySelector(".card").offsetWidth;
+const arrowBtns = document.querySelectorAll(".wrapper i");
+const carouselChildrens = [...carousel.children];
+
+let isDragging = false, isAutoPlay = true, startX, startScrollLeft, timeoutId;
+
+// Get the number of cards that can fit in the carousel at once
+let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
+
+// Insert copies of the last few cards to beginning of carousel for infinite scrolling
+carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
+    carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
+});
+
+// Insert copies of the first few cards to end of carousel for infinite scrolling
+carouselChildrens.slice(0, cardPerView).forEach(card => {
+    carousel.insertAdjacentHTML("beforeend", card.outerHTML);
+});
+
+// Scroll the carousel at appropriate postition to hide first few duplicate cards on Firefox
+carousel.classList.add("no-transition");
+carousel.scrollLeft = carousel.offsetWidth;
+carousel.classList.remove("no-transition");
+
+// Add event listeners for the arrow buttons to scroll the carousel left and right
+arrowBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        carousel.scrollLeft += btn.id == "left" ? -firstCardWidth : firstCardWidth;
+    });
+});
+
+const dragStart = (e) => {
+    isDragging = true;
+    carousel.classList.add("dragging");
+    // Records the initial cursor and scroll position of the carousel
+    startX = e.pageX;
+    startScrollLeft = carousel.scrollLeft;
+}
+
+const dragging = (e) => {
+    if(!isDragging) return; // if isDragging is false return from here
+    // Updates the scroll position of the carousel based on the cursor movement
+    carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+}
+
+const dragStop = () => {
+    isDragging = false;
+    carousel.classList.remove("dragging");
+}
+
+const infiniteScroll = () => {
+    // If the carousel is at the beginning, scroll to the end
+    if(carousel.scrollLeft === 0) {
+        carousel.classList.add("no-transition");
+        carousel.scrollLeft = carousel.scrollWidth - (2 * carousel.offsetWidth);
+        carousel.classList.remove("no-transition");
+    }
+    // If the carousel is at the end, scroll to the beginning
+    else if(Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
+        carousel.classList.add("no-transition");
+        carousel.scrollLeft = carousel.offsetWidth;
+        carousel.classList.remove("no-transition");
+    }
+
+    // Clear existing timeout & start autoplay if mouse is not hovering over carousel
+    clearTimeout(timeoutId);
+    if(!wrapper.matches(":hover")) autoPlay();
+}
+
+const autoPlay = () => {
+    if(window.innerWidth < 800 || !isAutoPlay) return; // Return if window is smaller than 800 or isAutoPlay is false
+    // Autoplay the carousel after every 2500 ms
+    timeoutId = setTimeout(() => carousel.scrollLeft += firstCardWidth, 2500);
+}
+autoPlay();
+
+carousel.addEventListener("mousedown", dragStart);
+carousel.addEventListener("mousemove", dragging);
+document.addEventListener("mouseup", dragStop);
+carousel.addEventListener("scroll", infiniteScroll);
+wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
+wrapper.addEventListener("mouseleave", autoPlay);
+  </script>
+</section>
+  <!-- review section ends -->
+
+    <!-- book section starts -->
+    <section class="book" id="book">
+
+      <h1 class="heading">
+        <span>b</span>
+        <span>o</span>
+        <span>o</span>
+        <span>k</span>
+        <span class="space"></span>
+        <span>n</span>
+        <span>o</span>
+        <span>w</span>
+      </h1>
+  
+      <div class="row">
+  
+        <div class="image half-width">
+          <img src="image/contact.png" alt="">
+        </div>        
+  
+        <div class="address-container">
+          <div class="small-image">
+              <img src="./image/mlogo.png" alt="Image" class="small-image">
+          </div>
+          <div class="address">
+              <h3>Unit C PRF Bldg., 776 Delos Reyes St., San Lorenzo, 
+                <br>Gapan CIty, Nueva Ecija 3105 Headquarters</h3>
+                <div class="button-container">
+                  <h2>Want to build your personalized tour package now? </h2>
+                  <button class="contact-btn">Consult our travel experts now</button>
+                  <button class="yellow-btn">subscribe to our newsletter</button>
+              </div>
+    </div>
+      </div>
+
+      <div class="additional-text">
+        <p>travel@manawari.ph</p>
+        <div class="contact-info">
+        <div class="social-icons">
+          <a href="https://www.instagram.com/manawaritravel/" class="social-icon" target="_blank"><img src="./icons/ig.svg" alt="Instagram"></a>
+          <a href="https://www.facebook.com/manawaritravel" class="social-icon" target="_blank"><img src="./icons/fb.svg" alt="Facebook"></a>
+          <a href="twitter.com" class="social-icon" target="_blank"><img src="./icons/twt.svg" alt="Twitter"></a>
+          <a href="https://www.linkedin.com/company/manawaritravel/about/" class="social-icon" target="_blank"><img src="./icons/in.svg" alt="LinkedIn"></a>
+        </div>    
+      </div>
+    </div>
+    <div class="additional-texts">
+      <p>+63-917-583-0717</p>
+      <div class="socials-icons">
+        <a href="tel:+63-917-583-0717" class="socials-icon"><img src="./icons/whatsapp.svg" alt="WhatsApp"></a>
+        <a href="tel:+63-917-583-0717" class="socials-icon"><img src="./icons/viber.svg" alt="Viber"></a>
+        <a href="tel:+63-917-583-0717" class="socials-icon"><img src="./icons/line.svg" alt="Line"></a>
+      </div>    
+    </div>
+  </div>
+
+    <!-- book section ends -->
+
+  <!-- contact section starts -->
+  <!-- contact section ends -->
+
+  <!-- brand section -->
+
+  <!-- footer section -->
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- custom js file link -->
+  <script src="js/script.js"></script>
+
+</body>
+</html>
